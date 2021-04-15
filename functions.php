@@ -1,5 +1,14 @@
 <?php
 
+function myhoststream_theme_support(){
+    // Adds dynamic title tag support
+    add_theme_support('title-tag');
+
+}
+
+add_action('after_setup_theme', 'myhoststream_theme_support');
+
+
 function myhoststream_register_styles(){
 
     $version = wp_get_theme()->get( 'Version' );
@@ -21,6 +30,8 @@ function myhoststream_register_scripts(){
 }
 
 add_action('wp_enqueue_scripts', 'myhoststream_register_scripts');
+
+remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 
 ?>
